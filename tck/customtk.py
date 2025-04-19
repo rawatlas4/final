@@ -52,10 +52,10 @@ def click():#когда нажимаеш на кнопку чтоб перено
                 normal_nik = us_entry.get()
                 neww_win.destroy()
                 
-            us_entry = CTkEntry(neww_win, placeholder_text="Введи колір", width=200, height=40)
+            us_entry = CTkEntry(neww_win, placeholder_text="Введи новій нік", width=200, height=40)
             us_entry.pack(pady=20)
 
-            us_btn = CTkButton(neww_win, text="Змінити колір", command=change_us)
+            us_btn = CTkButton(neww_win, text="Змінити нік", command=change_us)
             us_btn.pack(pady=10)
 
     except:
@@ -97,7 +97,7 @@ f1.pack(pady = 20)
 f2.pack(pady = 20)
 gde_smotret_tekst = CTkTextbox(f1,state='disable', width=300, height=360,)
 gde_smotret_tekst.configure(state="normal")  
-gde_smotret_tekst.insert(END, "я люблю кушать\n")  
+gde_smotret_tekst.insert(END, "якщо тобі не подобається фон віправ 0 та напиши який колір ти хочешь(можно як на російсікій та і на англ,щоб змінити нік відправ 00)\n")  
 gde_smotret_tekst.configure(state="disable")  
 gde_smotret_tekst.pack()
 
