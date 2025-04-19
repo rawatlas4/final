@@ -6,8 +6,8 @@ from translate import Translator
 translator = Translator(from_lang="ru", to_lang="en")
 
 client = socket(AF_INET , SOCK_STREAM)
-# client.connect(("6.tcp.eu.ngrok.io",17952))
-client.connect(("localhost",12345))
+client.connect(("4.tcp.eu.ngrok.io",10371))
+#lient.connect(("localhost",12345))
 
 normal_nik = "user1"
 load_image = Image.open("Imagee.png")#загрузка фото
@@ -26,7 +26,7 @@ def recive():
         try:
             prinyat_sms = client.recv(1024).decode()
             gde_smotret_tekst.configure(state="normal")
-            gde_smotret_tekst.insert(END,"server:" + prinyat_sms + "\n")
+            gde_smotret_tekst.insert(END, prinyat_sms + "\n")
             gde_smotret_tekst.configure(state='disable')
         except:
             pass    
@@ -35,11 +35,11 @@ threading.Thread(target=recive).start()#поток
 def click():#когда нажимаеш на кнопку чтоб переносился текст
     
     sms = ent.get()
-    client.send(sms.encode())
+    client.send(f' {normal_nik} {sms}'.encode())
     ent.delete(0,END)
-    gde_smotret_tekst.configure(state="normal")
-    gde_smotret_tekst.insert(END,normal_nik + sms + "\n")
-    gde_smotret_tekst.configure(state='disable')
+    # gde_smotret_tekst.configure(state="normal")
+    # gde_smotret_tekst.insert(END,normal_nik + sms + "\n")
+    # gde_smotret_tekst.configure(state='disable')
 
     try:#ето трай для того чтоб можно было поменять ник
         if sms == "00":
